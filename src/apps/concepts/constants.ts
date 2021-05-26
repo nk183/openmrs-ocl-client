@@ -6,4 +6,5 @@ export const SOURCE_VERSION_CONTAINER = "sourceVersion";
 export const SOURCE_CONTAINER = "source";
 
 export const FILTER_SOURCE_IDS = Object.keys(PREFERRED_SOURCES);
-export const CONCEPT_GENERAL: string[] = ["IncludeRetired"];
+export const CONCEPT_GENERAL: string[] = ["IncludeRetired","IncludeAddedConcepts"];
+export const CONCEPT_GENERAL_Already_Added: string[] = ["IncludeRetired"];

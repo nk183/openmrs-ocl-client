@@ -33,6 +33,7 @@ interface Props extends QueryParams {
   linkedDictionary?: string;
   linkedSource?: string;
   canModifyConcept: (concept: APIConcept) => boolean;
+  includeAddedConcepts:boolean;
 }
 
 interface HeadCell {
@@ -121,7 +122,8 @@ export const ConceptsTable: React.FC<Props> = ({
   linkedDictionary,
   // source to store new concepts in and use as criteria for whether a user can edit a concept
   linkedSource,
-  canModifyConcept
+  canModifyConcept,
+  includeAddedConcepts
 }) => {
   const classes = useStyles();
   const [selected, setSelected] = React.useState<string[]>([]);
@@ -231,6 +233,11 @@ export const ConceptsTable: React.FC<Props> = ({
                 const isItemSelected = isSelected(row.id);
                 const labelId = `enhanced-table-checkbox-${index}`;
                 return (
+                  <>
+                  {(!includeAddedConcepts && row.added)
+                  ?
+                  (<></>)
+                  :
                   <ConceptsTableRow
                     key={`${row.id}-${index}`}
                     row={row}
@@ -248,7 +255,8 @@ export const ConceptsTable: React.FC<Props> = ({
                     dictionaryToAddTo={dictionaryToAddTo}
                     isItemSelected={isItemSelected}
                     labelId={labelId}
-                  />
+                  />}
+                  </>
                 );
               })}
             </TableBody>

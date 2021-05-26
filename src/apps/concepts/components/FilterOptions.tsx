@@ -15,7 +15,7 @@ import {
   Theme,
   Typography
 } from "@material-ui/core";
-import { CONCEPT_CLASSES, DATA_TYPES, CONCEPT_GENERAL } from "../../../utils";
+import { CONCEPT_CLASSES, DATA_TYPES, CONCEPT_GENERAL, CONCEPT_GENERAL_Already_Added } from "../../../utils";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -138,6 +138,7 @@ const FilterGroup: React.FC<FilterGroupProps> = ({
 
 interface FilterOptionsProps {
   url: string;
+  isDictConcepts:boolean|undefined;
   checkedClasses: string[];
   setCheckedClasses: Function;
   checkedDataTypes: string[];
@@ -152,6 +153,7 @@ interface FilterOptionsProps {
 
 const FilterOptions: React.FC<FilterOptionsProps> = ({
   url,
+  isDictConcepts,
   checkedClasses,
   checkedDataTypes,
   checkedGeneral,
@@ -221,13 +223,23 @@ const FilterOptions: React.FC<FilterOptionsProps> = ({
           title="Data types"
           items={DATA_TYPES}
         />
-        <FilterGroup
-          checked={checkedGeneral}
-          setChecked={setCheckedGeneral}
-          searchText={searchText}
-          title="General"
-          items={CONCEPT_GENERAL}
-        />
+        {isDictConcepts?
+          <FilterGroup
+            checked={checkedGeneral}
+            setChecked={setCheckedGeneral}
+            searchText={searchText}
+            title="General"
+            items={CONCEPT_GENERAL_Already_Added}
+          />
+          :
+          <FilterGroup
+            checked={checkedGeneral}
+            setChecked={setCheckedGeneral}
+            searchText={searchText}
+            title="General"
+            items={CONCEPT_GENERAL}
+          />
+        }
       </Paper>
     </div>
   );

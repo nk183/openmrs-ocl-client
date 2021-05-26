@@ -318,6 +318,7 @@ const ViewConceptsPage: React.FC<Props> = ({
               removeConceptsFromDictionary={(conceptVersionUrls: string[]) =>
                 removeConceptsFromDictionary(containerUrl, conceptVersionUrls)
               }
+              includeAddedConcepts= {initialGeneralFilters.includes('IncludeAddedConcepts')}
             />
           </Grid>
           {!showOptions ? (
@@ -325,6 +326,7 @@ const ViewConceptsPage: React.FC<Props> = ({
           ) : (
             <Grid item xs={2} component="div">
               <FilterOptions
+                isDictConcepts={viewDictConcepts}
                 checkedClasses={classFilters}
                 setCheckedClasses={setClassFilters}
                 checkedDataTypes={dataTypeFilters}

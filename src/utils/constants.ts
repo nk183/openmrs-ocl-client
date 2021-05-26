@@ -310,4 +310,6 @@ export const CONTEXT = {
   edit: "edit"
 };
 
-export const CONCEPT_GENERAL: string[] = ["Include Retired"];
+// export const CONCEPT_GENERAL: string[] = ["IncludeRetired","IncludeAddedConcepts"];
+export const CONCEPT_GENERAL: string[] = ["IncludeRetired","IncludeAddedConcepts"];
+export const CONCEPT_GENERAL_Already_Added: string[] = ["IncludeRetired"];
